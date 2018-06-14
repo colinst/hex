@@ -1,5 +1,11 @@
 ---
 title: Spring 数据源动态切换
+date: 2017/9/13 20:46:25
+tags: 
+    - Spring  
+    - SQL  
+    - DataBase  
+    - Java  
 ---
 
 在某些业务场景重我们会遇到数据库的切换，  
