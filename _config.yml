@@ -3,12 +3,13 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 虹西的博客
-subtitle: 周期复盘|原因探究 技术分享
-description: 虹西的技术博客，栈点涉及Java,Kotlin,Dart,R,C#,C++,Python, Linux,Android,Fuchsia, Spring,Flutter,Netty,JFinal,ML
-keywords: Blog,Colin,Java,Kotlin,Dart,R,C#,C++,Python, Linux,Android,Fuchsia, Spring,Flutter,Netty,JFinal,ML
+title: 虹西森林
+subtitle: 林空鹿饮溪|复盘 实践 分享
+description: 持续性踌躇满志  间歇性混吃等死
+keywords: 技术博客，Blog,Colin,Java,Kotlin,Dart,R,C#,C++,Python, Linux,Android,Fuchsia, Spring,Flutter,Netty,JFinal,ML
 author: 虹西/Colin
-language: en
+#language: en
+language: zh-Hans
 timezone: Shanghai
 
 # URL

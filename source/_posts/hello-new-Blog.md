@@ -1,11 +1,16 @@
 ---
-title: 第一篇博客|Hello New Blog
+title: 第一篇博客|New Blog
+description: 第一篇博客|New Blog 🐳🐋🐟🐳🐋🐟🐳🐋 \n New Blog 🐳🐋🐟🐳🐋🐟🐳🐋
+
+date: 2017-01-010 13:00:00
 ---
 
-嗨，你来了  
- 代码基地[github/colinst](https://github.com/colinst)!
- 个人网站域名[gitmmp.com](http://gitmmp.com)!
- 欢迎来到我的博客 [Blog.gitmmp.com](https://colinst.github.io)!   
+ 
+ 嗨，你来了  
+  代码基地[github/colinst](https://github.com/colinst)!
+  个人网站域名[gitmmp.com](http://gitmmp.com)!
+  欢迎来到我的博客 [Blog.gitmmp.com](https://colinst.github.io)!  
+  🐳🐋🐟🐳🐋🐟🐳🐋🐳🐋🐟
  
  啦啦啦~  
  吾日三省吾身：早上吃什么，中午吃什么，晚上吃什么...    
