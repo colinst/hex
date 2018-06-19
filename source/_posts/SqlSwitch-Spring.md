@@ -1,5 +1,12 @@
 ---
 title: Spring 动态数据源热切换
+
+tags: 
+    - Spring 
+    - SQL 
+    - database hotChange 
+
+date: 2017-06-010 13:00:00
 ---
 
 ## test

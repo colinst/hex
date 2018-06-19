@@ -1,12 +1,21 @@
 ---
-title: 第一篇博客|New Blog
-description: 第一篇博客|New Blog 🐳🐋🐟🐳🐋🐟🐳🐋 \n New Blog 🐳🐋🐟🐳🐋🐟🐳🐋
+title: GithubPages-Hexo 使用设置|细则备注
+
+tags: 
+    - hexo 
+    - setting  
+
+categories: 
+    - setting
+    - blog
+
+description: GithubPages-Hexo 使用设置|细则备注 🐳🐋🐟🐳🐋🐟🐳🐋🐳🐋🐟🐳🐋🐟🐳🐋  
 
 date: 2017-01-010 13:00:00
 ---
 
  
- 嗨，你来了 
+ 嗨，Hello
   
   代码基地[github/colinst](https://github.com/colinst)!
   个人网站域名[gitmmp.com](http://gitmmp.com)!
