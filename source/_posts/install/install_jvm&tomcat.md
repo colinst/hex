@@ -9,13 +9,13 @@ tags:
 categories: 
     - install
     - linux
-    
-description: Linux中配置jdk和tomcat 细则
+   
 
 date: 2016-07-012 13:00:00
 ---
 
-
+## 说明
+本文主要说明在Linux中配置jdk和tomcat,将自己在配置过程中遇到的一些问题及相关的解决方案也列举出来
 
 ## Jvm
 ### Install
@@ -219,8 +219,8 @@ Insert in head this:
 ![avatar](install_jvm&tomcat/1.jdk-license.png)  
 {% asset_img 1.jdk-license.png jdk-license %}
 {% img [] %}
-好像我们用'wget'的时候是没有同意这个选项的,  
-所以下载下来有问题的包是不饿能解压的  
+我们用'wget'的时候是没有同意这个选项的,  
+所以下载下来有问题的包是不能解压的  
 怪不得  
 
 ##### 那可咋整

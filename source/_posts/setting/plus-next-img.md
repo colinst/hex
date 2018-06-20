@@ -41,4 +41,4 @@ npm install https://github.com/CodeFalling/hexo-asset-image --save
 ```
 ![logo](file/img.png)
 ```
-其中logo 为图片标题信息
+其中[]中内容为为图片标题信息

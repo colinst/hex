@@ -8,8 +8,6 @@ tags:
 categories: 
     - install
     - linux
-    
-description: Linux中配置安装Mysql
 
 date: 2016-07-012 13:00:00
 ---
