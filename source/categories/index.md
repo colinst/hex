@@ -2,10 +2,7 @@
 title: 文章分类
 ---
 
-## Setting
-### Blog
-Hexo  
-Next  
+## Use
 
 
 ## Install
@@ -13,6 +10,11 @@ Next
 jvm  
 mysql  
 tomcat  
+
+## Setting
+### Blog
+Hexo  
+Next  
 
 
 ## Linux
