@@ -304,3 +304,17 @@ cd to bin
 ```
 <br/><br/><br/>
 
+
+## Jar 包使用
+#### 1 running list
+    [root@Warbuild-Svr /]# ps aux|grep chessService.jar
+    
+    root      58662  0.0  0.0 112720   988 pts/3    S+   10:53   0:00 grep --color=auto chessService.jar
+    root     125484  0.6  0.9 13526904 297464 ?     Sl   10:07   0:18 java -jar chessService.jar
+    root     148294  0.0  0.3 14451472 117300 pts/0 Sl   10:15   0:01 java -jar chessService.jar
+#### 2 Kill running
+    [root@Warbuild-Svr /]# kill -9 148294
+#### 3 Start 
+    [root@Warbuild-Svr /]# java -jar chessService.jar &
+声明：'&' 为持久化符号，若未加入'&' 则关闭窗口后停止程序  
+

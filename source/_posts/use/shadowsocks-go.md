@@ -275,8 +275,101 @@ ELRepo是一个第三方仓库，可以将内核升级到最新版本。
 
 
 ## 安装go
+下载解压
+```
+    cd /usr/local     # golang安装到此路径下
+    wget https://storage.googleapis.com/golang/go1.6.3.linux-amd64.tar.gz
+    tar -xvf go1.6.3linux-amd64.tar.gz
+```
+添加环境变量
+```
+    vim /etc/profile    ->  加入
+    
+    export GOROOT=/usr/local/go
+    export PATH=$PATH:$GOROOT/bin
+```
+重载
+```
+    source /etc/profile
+```
+在 ~ 目录设置自己的GOPATH
+```
+    vim .bash_profile   ->  添加
+    export GOPATH=$HOME/shadowsocks
+```
+重载
+```
+    source .bash_profile
+```
 ## 安装git
+```
+    yum install git
+```
+
 ## 安装shadowsocks
+```
+    go get github.com/shadowsocks/shadowsocks-go/cmd/shadowsocks-server
+    
+    cd shadowsocks/
+    ls
+        bin pkg src
+```
+```
+    cd bin/
+    ./shadowsocks-server -h
+```
+
 ## 配置config.json文件
-## 防火墙开放端口
+在bin目录下
+```
+    {
+        "server":"173.82.235.219",
+        "port_password":{
+             "7973":"123456",
+             "7884":"123456",
+             "7987":"123456",
+             "7938":"123456",
+            "7999":"123456"
+        },
+        "local_address": "127.0.0.1",
+        "local_port":1080,
+        "timeout":600,
+        "method":"aes-128-cfb",
+        "fast_open":false,
+        "workers":1
+    }
+```
+config文件参数配置：
+
+## 开放端口
+将以上config文件的端口添加到防火墙
+这里使用firewall命令
+
+查看所有打开的端口： 
+```
+    [root@colinvps /]# firewall-cmd --zone=public --list-ports
+    7884/tcp 7987/tcp 7999/tcp 7938/tcp 7973/tcp
+```
+添加端口
+```
+    [root@colinvps /]# firewall-cmd --zone=public --add-port=80/tcp --permanent 
+    success
+    
+    [root@colinvps /]# firewall-cmd --zone=public --list-ports
+    7884/tcp 7987/tcp 7999/tcp 7938/tcp 7973/tcp  80/tcp
+```
+载入生效
+```
+    firewall-cmd --reload
+```
+
+## 开启shadowsocks服务
+```
+    ./shadowsocks-server > log &
+```
+
 ## 使用客户端测试链接
+在[shadowsocks-windows](https://github.com/shadowsocks/shadowsocks-windows/releases)中下载客户端
+配置好相关的内容进行测试，启用系统代理，右键点开帮助->显示日志
+查看链接情况
+点击[谷歌](https://www.google.com/)测试 
