@@ -215,7 +215,7 @@ ELRepo是一个第三方仓库，可以将内核升级到最新版本。
 #### centos7
 centos 7中是通过grub2引导启动顺序。需要执行相关命令。
 1.查看当前系统所有内核
-```
+``
     [root@colinvps /]# cat boot/grub2/grub.cfg |grep menuentry
     if [ x"${feature_menuentry_id}" = xy ]; then
       menuentry_id_option="--id"
