@@ -1,7 +1,9 @@
 [Jvm基本结构](https://lingsui.github.io/2018/03/08/JVM%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E3%80%81%E5%86%85%E5%AD%98%E6%A8%A1%E5%9D%97/)
 [触发JVM进行Full GC的情况及应对策略](https://blog.csdn.net/chenleixing/article/details/46706039/)
 
+[Netty服务端优化](https://blog.csdn.net/yixiao3660/article/details/51774075)
 [Netty百万级推送服务设计要点](https://www.cnblogs.com/zhwl/p/4748507.html)
+[Netty百万级推送服务设计要点](http://www.infoq.com/cn/articles/netty-million-level-push-service-design-points/)
 
 
 ## 杂项
