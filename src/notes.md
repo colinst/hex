@@ -22,7 +22,6 @@ PC-chrome插件
 自定义mybatis注解
 
 雅思托福选择...
-水培工厂
 ___定时关机命令
 Win+R-->    3600=小时*1
 shutdown -s -t 7200

@@ -7,7 +7,7 @@ title: 虹西森林
 subtitle: 林空鹿饮溪|复盘 实践 分享
 description: 持续性踌躇满志  间歇性混吃等死
 keywords: 技术博客，Blog,Colin,Java,Kotlin,Dart,R,C#,C++,Python, Linux,Android,Fuchsia, Spring,Flutter,Netty,JFinal,ML
-author: 虹西/Colin
+author: 虹西/Hongxii
 #language: en
 language: zh-Hans
 timezone: Asia/Shanghai
@@ -80,6 +80,6 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: ssh://git@github.com/colinst/colinst.github.io.git
+  repository: ssh://git@github.com/hongxii/hongxii.github.io.git
   branch: master
   message:  first
