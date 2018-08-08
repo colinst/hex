@@ -78,8 +78,10 @@ theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
+## Docs: https://hexo.io/docs/deployment.html
+## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: https://github.com/hongxii/hongxii.github.io.git
+  repository: git@github.com:hongxii/hongxii.github.io.git
   branch: master
   message:  merage
