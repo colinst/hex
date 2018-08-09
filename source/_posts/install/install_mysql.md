@@ -12,6 +12,9 @@ categories:
 date: 2016-07-012 13:00:00
 ---
 
+Linux下安装MySql遇到的坑和问题
+<!-- more -->
+
 
 ### Install
 #### 1. get Src Yum  

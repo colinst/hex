@@ -6,10 +6,8 @@ kotlin
     dataClass
     objectClass
 hexo
+    theme-icarus
     setting
-    class-
-        post-title
-        post-meta
     pwd
     uiChange
     git-plan

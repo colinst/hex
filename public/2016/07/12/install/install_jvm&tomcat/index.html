@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="java,tomcat,install," />
+  <meta name="keywords" content="install,java,tomcat," />
 
 
 
@@ -79,22 +79,22 @@
 
 
 
-<meta name="description" content="说明本文主要说明在Linux中配置jdk和tomcat,将自己在配置过程中遇到的一些问题及相关的解决方案也列举出来 JvmInstallGo to Download JDKJava SE Download Page On OracleJava se 8   Jdk 8u172 For Linux.trr.gz WARNINGCannot Use Next Code Get tar.gz Packa">
-<meta name="keywords" content="java,tomcat,install">
+<meta name="description" content="说明本文主要说明在Linux中配置jdk和tomcat,将自己在配置过程中遇到的一些问题及相关的解决方案也列举出来">
+<meta name="keywords" content="install,java,tomcat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Jvm&amp;Tomcat 安装">
 <meta property="og:url" content="http://blog.gitmmp.com/2016/07/12/install/install_jvm&tomcat/index.html">
 <meta property="og:site_name" content="虹西森林">
-<meta property="og:description" content="说明本文主要说明在Linux中配置jdk和tomcat,将自己在配置过程中遇到的一些问题及相关的解决方案也列举出来 JvmInstallGo to Download JDKJava SE Download Page On OracleJava se 8   Jdk 8u172 For Linux.trr.gz WARNINGCannot Use Next Code Get tar.gz Packa">
+<meta property="og:description" content="说明本文主要说明在Linux中配置jdk和tomcat,将自己在配置过程中遇到的一些问题及相关的解决方案也列举出来">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://blog.gitmmp.com/2016/07/12/install/install_jvm&tomcat/install_jvm&tomcat/1.jdk-license.png">
 <meta property="og:image" content="http://blog.gitmmp.com/2016/07/12/install/install_jvm&tomcat/1.jdk-license.png">
 <meta property="og:image" content="http://blog.gitmmp.com/2016/07/12/install/install_jvm&tomcat/install_jvm&tomcat/1.jdk-license.png">
 <meta property="og:image" content="http://blog.gitmmp.com/2016/07/12/install/install_jvm&tomcat/1.jdk-license.png">
-<meta property="og:updated_time" content="2018-08-07T05:08:50.926Z">
+<meta property="og:updated_time" content="2018-08-09T06:38:22.734Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jvm&amp;Tomcat 安装">
-<meta name="twitter:description" content="说明本文主要说明在Linux中配置jdk和tomcat,将自己在配置过程中遇到的一些问题及相关的解决方案也列举出来 JvmInstallGo to Download JDKJava SE Download Page On OracleJava se 8   Jdk 8u172 For Linux.trr.gz WARNINGCannot Use Next Code Get tar.gz Packa">
+<meta name="twitter:description" content="说明本文主要说明在Linux中配置jdk和tomcat,将自己在配置过程中遇到的一些问题及相关的解决方案也列举出来">
 <meta name="twitter:image" content="http://blog.gitmmp.com/2016/07/12/install/install_jvm&tomcat/install_jvm&tomcat/1.jdk-license.png">
 
 
@@ -368,7 +368,7 @@
       
 
       
-        <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>本文主要说明在Linux中配置jdk和tomcat,将自己在配置过程中遇到的一些问题及相关的解决方案也列举出来</p>
+        <h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>本文主要说明在Linux中配置jdk和tomcat,将自己在配置过程中遇到的一些问题及相关的解决方案也列举出来<br><a id="more"></a></p>
 <h2 id="Jvm"><a href="#Jvm" class="headerlink" title="Jvm"></a>Jvm</h2><h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><h4 id="Go-to-Download-JDK"><a href="#Go-to-Download-JDK" class="headerlink" title="Go to Download JDK"></a>Go to Download JDK</h4><p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">Java SE Download Page On Oracle</a><br><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">Java se 8</a>  </p>
 <p><a href="http://download.oracle.com/otn-pub/java/jdk/8u172-b11/a58eab1ec242421181065cdc37240b08/jdk-8u172-linux-x64.tar.gz" target="_blank" rel="noopener">Jdk 8u172 For Linux.trr.gz</a></p>
 <p><strong>WARNING</strong><br>Cannot Use Next Code Get tar.gz Package<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[root@colinECS download]</span># <span class="selector-tag">wget</span> <span class="selector-tag">http</span>:<span class="comment">//download.oracle.com/otn-pub/java/jdk/8u172-b11/a58eab1ec242421181065cdc37240b08/jdk-8u172-linux-x64.tar.gz</span></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">--2018-06-04</span> <span class="selector-tag">09</span><span class="selector-pseudo">:36</span><span class="selector-pseudo">:08--</span>  <span class="selector-tag">http</span>:<span class="comment">//download.oracle.com/otn-pub/java/jdk/8u172-b11/a58eab1ec242421181065cdc37240b08/jdk-8u172-linux-x64.tar.gz</span></span><br><span class="line"><span class="selector-tag">Resolving</span> <span class="selector-tag">download</span><span class="selector-class">.oracle</span><span class="selector-class">.com</span> (download.oracle.com)... <span class="selector-tag">23</span><span class="selector-class">.211</span><span class="selector-class">.96</span><span class="selector-class">.75</span></span><br><span class="line"><span class="selector-tag">Connecting</span> <span class="selector-tag">to</span> <span class="selector-tag">download</span><span class="selector-class">.oracle</span><span class="selector-class">.com</span> (download.oracle.com)|<span class="selector-tag">23</span><span class="selector-class">.211</span><span class="selector-class">.96</span><span class="selector-class">.75</span>|<span class="selector-pseudo">:80...</span> <span class="selector-tag">connected</span>.</span><br><span class="line"><span class="selector-tag">HTTP</span> <span class="selector-tag">request</span> <span class="selector-tag">sent</span>, <span class="selector-tag">awaiting</span> <span class="selector-tag">response</span>... <span class="selector-tag">302</span> <span class="selector-tag">Moved</span> <span class="selector-tag">Temporarily</span></span><br><span class="line"><span class="selector-tag">Location</span>: <span class="selector-tag">https</span>:<span class="comment">//edelivery.oracle.com/otn-pub/java/jdk/8u172-b11/a58eab1ec242421181065cdc37240b08/jdk-8u172-linux-x64.tar.gz [following]</span></span><br><span class="line"><span class="selector-tag">--2018-06-04</span> <span class="selector-tag">09</span><span class="selector-pseudo">:36</span><span class="selector-pseudo">:08--</span>  <span class="selector-tag">https</span>:<span class="comment">//edelivery.oracle.com/otn-pub/java/jdk/8u172-b11/a58eab1ec242421181065cdc37240b08/jdk-8u172-linux-x64.tar.gz</span></span><br><span class="line"><span class="selector-tag">Resolving</span> <span class="selector-tag">edelivery</span><span class="selector-class">.oracle</span><span class="selector-class">.com</span> (edelivery.oracle.com)... <span class="selector-tag">184</span><span class="selector-class">.26</span><span class="selector-class">.250</span><span class="selector-class">.202</span>, <span class="selector-tag">2600</span><span class="selector-pseudo">:1417</span><span class="selector-pseudo">:76</span><span class="selector-pseudo">:19a</span><span class="selector-pseudo">::2d3e</span>, <span class="selector-tag">2600</span><span class="selector-pseudo">:1417</span><span class="selector-pseudo">:76</span><span class="selector-pseudo">:181</span><span class="selector-pseudo">::2d3e</span></span><br><span class="line"><span class="selector-tag">Connecting</span> <span class="selector-tag">to</span> <span class="selector-tag">edelivery</span><span class="selector-class">.oracle</span><span class="selector-class">.com</span> (edelivery.oracle.com)|<span class="selector-tag">184</span><span class="selector-class">.26</span><span class="selector-class">.250</span><span class="selector-class">.202</span>|<span class="selector-pseudo">:443...</span> <span class="selector-tag">connected</span>.</span><br><span class="line"><span class="selector-tag">HTTP</span> <span class="selector-tag">request</span> <span class="selector-tag">sent</span>, <span class="selector-tag">awaiting</span> <span class="selector-tag">response</span>... <span class="selector-tag">302</span> <span class="selector-tag">Moved</span> <span class="selector-tag">Temporarily</span></span><br><span class="line"><span class="selector-tag">Location</span>: <span class="selector-tag">http</span>:<span class="comment">//download.oracle.com/errors/download-fail-1505220.html [following]</span></span><br><span class="line"><span class="selector-tag">--2018-06-04</span> <span class="selector-tag">09</span><span class="selector-pseudo">:36</span><span class="selector-pseudo">:09--</span>  <span class="selector-tag">http</span>:<span class="comment">//download.oracle.com/errors/download-fail-1505220.html</span></span><br><span class="line"><span class="selector-tag">Connecting</span> <span class="selector-tag">to</span> <span class="selector-tag">download</span><span class="selector-class">.oracle</span><span class="selector-class">.com</span> (download.oracle.com)|<span class="selector-tag">23</span><span class="selector-class">.211</span><span class="selector-class">.96</span><span class="selector-class">.75</span>|<span class="selector-pseudo">:80...</span> <span class="selector-tag">connected</span>.</span><br><span class="line"><span class="selector-tag">HTTP</span> <span class="selector-tag">request</span> <span class="selector-tag">sent</span>, <span class="selector-tag">awaiting</span> <span class="selector-tag">response</span>... <span class="selector-tag">200</span> <span class="selector-tag">OK</span></span><br><span class="line"><span class="selector-tag">Length</span>: <span class="selector-tag">5307</span> (<span class="number">5.2</span>K) <span class="selector-attr">[text/html]</span></span><br><span class="line"><span class="selector-tag">Saving</span> <span class="selector-tag">to</span>: ‘<span class="selector-tag">jdk-8u172-linux-x64</span><span class="selector-class">.tar</span><span class="selector-class">.gz</span>’</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">100%</span><span class="selector-attr">[======================================&gt;]</span> <span class="selector-tag">5</span>,<span class="selector-tag">307</span>       <span class="selector-tag">--</span><span class="selector-class">.-K</span>/<span class="selector-tag">s</span>   <span class="selector-tag">in</span> <span class="selector-tag">0s</span></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">2018-06-04</span> <span class="selector-tag">09</span><span class="selector-pseudo">:36</span><span class="selector-pseudo">:09</span> (<span class="number">492</span> MB/s) <span class="selector-tag">-</span> ‘<span class="selector-tag">jdk-8u172-linux-x64</span><span class="selector-class">.tar</span><span class="selector-class">.gz</span>’ <span class="selector-tag">saved</span> <span class="selector-attr">[5307/5307]</span></span><br></pre></td></tr></table></figure></p>
@@ -435,11 +435,11 @@ root     148294  0.0  0.3 14451472 117300 pts/0 Sl   10:15   0:01 java -jar ches
       
         <div class="post-tags">
           
+            <a href="/tags/install/" rel="tag"><i class="fa fa-tag"></i> install</a>
+          
             <a href="/tags/java/" rel="tag"><i class="fa fa-tag"></i> java</a>
           
             <a href="/tags/tomcat/" rel="tag"><i class="fa fa-tag"></i> tomcat</a>
-          
-            <a href="/tags/install/" rel="tag"><i class="fa fa-tag"></i> install</a>
           
         </div>
       
@@ -452,18 +452,14 @@ root     148294  0.0  0.3 14451472 117300 pts/0 Sl   10:15   0:01 java -jar ches
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/12/install/install_mysql/" rel="next" title="Mysql安装[Linux]">
-                <i class="fa fa-chevron-left"></i> Mysql安装[Linux]
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/01/10/setting/setting-hexo/" rel="prev" title="GithubPages-Hexo 使用设置|细则备注">
-                GithubPages-Hexo 使用设置|细则备注 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/07/12/install/install_mysql/" rel="prev" title="Mysql安装[Linux]">
+                Mysql安装[Linux] <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

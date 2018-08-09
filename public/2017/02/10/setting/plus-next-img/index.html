@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="虹西森林">
 <meta property="og:description" content="传统句法中的图片引用无法在Hexo中使用，需要加料">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-07T05:08:50.944Z">
+<meta property="og:updated_time" content="2018-08-09T06:38:22.826Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo 引用图片">
 <meta name="twitter:description" content="传统句法中的图片引用无法在Hexo中使用，需要加料">
@@ -381,6 +381,7 @@
         <p>修改_config.yml配置文件post_asset_folder项为true。  </p>
 <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="string">"file"</span></span><br></pre></td></tr></table></figure>
 <p>此时创建文章后，会出现一个与文章文件同名的文件夹。<br>将图片文件复制到文件夹中。(img.png)  </p>
+<a id="more"></a>
 <h3 id="直接引用"><a href="#直接引用" class="headerlink" title="直接引用"></a>直接引用</h3><p>前提为，你的hexo版本是hexo3以上<br><figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"></span><span class="template-tag">&#123;%  <span class="name">asset_img</span> img.png  img的图片信息  %&#125;</span><span class="xml"></span></span><br></pre></td></tr></table></figure></p>
 <h3 id="hexo插件方法"><a href="#hexo插件方法" class="headerlink" title="hexo插件方法"></a>hexo插件方法</h3><p>安装<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https:<span class="regexp">//gi</span>thub.com<span class="regexp">/CodeFalling/</span>hexo-asset-image --save</span><br></pre></td></tr></table></figure></p>
 <p>等待一段时间后安装完成后，使用传统方法引用就好<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">logo</span>](<span class="link">file/img.png</span>)</span><br></pre></td></tr></table></figure></p>

@@ -1,5 +1,5 @@
 ---
-title: ShadowSocks-安装配置[go 语言版本]
+title: ShadowSocks-从入门到出门[go版本]
 
 tags: 
     - go
@@ -15,6 +15,7 @@ date: 2017-12-012 13:00:00
 
 &emsp;&emsp;因被喝茶，shadowsocks 作者被迫停更了shadowsocks的python服务器版本，go语言版本开始被很多人使用。但python版本停更并非go版本使用频次增多的主要原因,除了语言切换的限制，更多的是因为go语言中自带高并发的特性，使得其体验较好，于是越来越多的同事都自行搭建go版本自用。
 &emsp;&emsp;本文尽可能详细说明shadowsocks的搭建使用细节。
+<!-- more -->
 &emsp;&emsp;本博文为综合集，文章较长，已分页，可在以下目录中新开链接窗口使用。前两步为提升网络性能，可直接从第三步开始。
       * 升级Linux系统内核
       * 更改Linux底层TCP协议算法[BBR 加速]

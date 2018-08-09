@@ -32,6 +32,7 @@ date: 2017-01-010 13:00:00
  吾日三省吾身7：什么🐟🐟🐟，什么🐟什么🐟🐟，🐟🐟🐟什么🐟🐟🐟什么🐟🐟🐟🐟🐟🐟🐟🐟🐟...  
  吾日三省吾身8：🐳🐋🐟🐠🦐🐡🦑🐬🐬🦈🐙🐟🐠🦑🐬🦈🐙🐟🐠🦈🐙🐟🐠🐳🐋🐟🐠🦐🦐🐡🦑🐬
  
+<!-- more -->
 
 ## 🐟🐟二级大鱼
 
@@ -89,5 +90,119 @@ More info: [Deployment](https://hexo.io/docs/deployment.html)
 以及，对应站点定义好SSH key
 ```
 
-我会说刚开始搞Hexo,git ssh 卡了有点久的吗23333  
-不过总算是把jeykll 这个虐心的扔掉了
+
+## Will Change
+### 在文章底部增加版权信息
+在目录 next/layout/_macro/下添加 my-copyright.swig：
+```
+    {% if page.copyright %}
+    <div class="my_post_copyright">
+      <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+    
+      <!-- JS库 sweetalert 可修改路径 -->
+      <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <p><span>本文标题:</span><a href="{{ url_for(page.path) }}">{{ page.title }}</a></p>
+      <p><span>文章作者:</span><a href="/" title="访问 {{ theme.author }} 的个人博客">{{ theme.author }}</a></p>
+      <p><span>发布时间:</span>{{ page.date.format("YYYY年MM月DD日 - HH:MM") }}</p>
+      <p><span>最后更新:</span>{{ page.updated.format("YYYY年MM月DD日 - HH:MM") }}</p>
+      <p><span>原始链接:</span><a href="{{ url_for(page.path) }}" title="{{ page.title }}">{{ page.permalink }}</a>
+        <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="{{ page.permalink }}"  aria-label="复制成功！"></i></span>
+      </p>
+      <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+    </div>
+    <script> 
+        var clipboard = new Clipboard('.fa-clipboard');
+          $(".fa-clipboard").click(function(){
+          clipboard.on('success', function(){
+            swal({   
+              title: "",   
+              text: '复制成功',
+              icon: "success", 
+              showConfirmButton: true
+              });
+            });
+        });  
+    </script>
+    {% endif %}
+```
+在目录next/source/css/_common/components/post/下添加my-post-copyright.styl：
+```
+    .my_post_copyright {
+      width: 85%;
+      max-width: 45em;
+      margin: 2.8em auto 0;
+      padding: 0.5em 1.0em;
+      border: 1px solid #d3d3d3;
+      font-size: 0.93rem;
+      line-height: 1.6em;
+      word-break: break-all;
+      background: rgba(255,255,255,0.4);
+    }
+    .my_post_copyright p{margin:0;}
+    .my_post_copyright span {
+      display: inline-block;
+      width: 5.2em;
+      color: #b5b5b5;
+      font-weight: bold;
+    }
+    .my_post_copyright .raw {
+      margin-left: 1em;
+      width: 5em;
+    }
+    .my_post_copyright a {
+      color: #808080;
+      border-bottom:0;
+    }
+    .my_post_copyright a:hover {
+      color: #a3d2a3;
+      text-decoration: underline;
+    }
+    .my_post_copyright:hover .fa-clipboard {
+      color: #000;
+    }
+    .my_post_copyright .post-url:hover {
+      font-weight: normal;
+    }
+    .my_post_copyright .copy-path {
+      margin-left: 1em;
+      width: 1em;
+      +mobile(){display:none;}
+    }
+    .my_post_copyright .copy-path:hover {
+      color: #808080;
+      cursor: pointer;
+    }
+```
+修改next/layout/_macro/post.swig，在代码
+```
+<div>
+      {% if not is_index %}
+        {% include 'wechat-subscriber.swig' %}
+      {% endif %}
+</div>
+```
+之前添加增加如下代码：
+```
+<div>
+      {% if not is_index %}
+        {% include 'my-copyright.swig' %}
+      {% endif %}
+</div>
+```
+修改next/source/css/_common/components/post/post.styl文件，在最后一行增加代码：
+```
+@import "my-post-copyright"
+```
+保存重新生成即可。 
+如果要在该博文下面增加版权信息的显示，需要在 Markdown 中增加copyright: true的设置，类似：
+```
+    ---
+    title: 前端小项目：使用canvas绘画哆啦A梦
+    date: 2017-05-22 22:53:53
+    tags: canvas
+    categories: 前端
+    copyright: true
+    ---
+```
+
