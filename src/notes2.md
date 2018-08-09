@@ -8,9 +8,11 @@ kotlin
 hexo
     theme-icarus
     setting
-    pwd
     uiChange
     git-plan
+    read more's dynamic colorChange
+    read more's dynamic hide
+    read more -> bookMarks
 JIAZI
     weixin
     products-compare

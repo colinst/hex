@@ -14,7 +14,18 @@ src/setNext.md
 默认：center
 改为：left
 
+### 阅读全文按钮调整
+位置：themes/next/source/css/_variables/base.styl
+行号：164-165
+默认： $btn-default-border-width       = 2px
+      $btn-default-border-color       = $black-deep
 
+对齐：
+位置：themes/next/source/css/_common/components/post/post-button.styl
+添加：text-align: left;
 
-
+按钮边距：
+位置：themes/next/source/css/_common/components/buttons.styl
+修改：padding: 0 0px;
+默认：padding: 0 2px;
 
