@@ -1,5 +1,5 @@
 ---
-title: GithubPages-Hexo 使用设置|细则备注
+title: Hexo-Next 设置|备忘
 
 tags: 
     - hexo 
@@ -9,67 +9,83 @@ categories:
     - setting
     - blog
 
-description: GithubPages-Hexo 使用设置|细则备注 🐳🐋🐟🐳🐋🐟🐳🐋🐳🐋🐟🐳🐋🐟🐳🐋  
-
 date: 2017-01-010 13:00:00
 ---
 
- 
- 嗨，Hello
-  
+  嗨，Hello,本文为第一篇Hexo博客文章 🐳🐋🐟🐳🐋🐟🐳🐋🐳🐋🐟
   代码基地[github/hongxii](https://github.com/colinst)!
-  个人网站域名[gitmmp.com](http://gitmmp.com)!
+  个人网站域名(架设中)[gitmmp.com](https://gitmmp.com)!
   欢迎来到我的博客 [Blog.gitmmp.com](https://colinst.github.io)!  
-  🐳🐋🐟🐳🐋🐟🐳🐋🐳🐋🐟
- 
- 啦啦啦~  
- 吾日三省吾身：早上吃什么，中午吃什么，晚上吃什么...    
- 吾日三省吾身2：我是谁，我在哪，我在干什么...    
- 吾日三省吾身3：早上干什么，中午干什么，晚上干什么...  
- 吾日三省吾身4：今天干什么，明天干什么，后天干什么...  
- 吾日三省吾身5：这周干什么，下周干什么，下下周干什么...  
- 吾日三省吾身6：鱼🐟，好大的鱼🐟，虎纹鲨鱼🐯🐟...  
- 吾日三省吾身7：什么🐟🐟🐟，什么🐟什么🐟🐟，🐟🐟🐟什么🐟🐟🐟什么🐟🐟🐟🐟🐟🐟🐟🐟🐟...  
- 吾日三省吾身8：🐳🐋🐟🐠🦐🐡🦑🐬🐬🦈🐙🐟🐠🦑🐬🦈🐙🐟🐠🦈🐙🐟🐠🐳🐋🐟🐠🦐🦐🐡🦑🐬
- 
+Hexo + Next的组合可以无限优化，甚至某些组织站点都用hexo作为发布,个人博客不必花费太多的时间，如果做组织网站则建议使用灵活度更高的主题（[icarus](https://blog.zhangruipeng.me/hexo-theme-icarus/)）。
+仅用一文说明设计部署等关键点，个性化范围等关键点，花太多时间在上面也不好，本文轻改Next主题。以下为目录：
 <!-- more -->
 
-## 🐟🐟二级大鱼
+## 文章目录：
+<!-- TOC -->
 
-### 🐟🐟🐟做一只小小鱼
+- [基建 Base](#基建-base)
+    - [依赖环境 environment](#依赖环境-environment)
+    - [常用命令 command](#常用命令-command)
+- [主题轻改 Theme-Next](#主题轻改-theme-next)
+    - [基本信息 baseInfo](#基本信息-baseinfo)
+        - [站点设置 siteInfo](#站点设置-siteinfo)
+        - [侧边栏信息 authorInfo](#侧边栏信息-authorinfo)
+    - [首页样式 viewIndex](#首页样式-viewindex)
+        - [博文块样式 blockView](#博文块样式-blockview)
+        - [底层动画   cssFlash](#底层动画---cssflash)
+        - [右上Github](#右上github)
+        - [页尾信息 footer](#页尾信息-footer)
+    - [其他样式 views](#其他样式-views)
+        - [关于 about](#关于-about)
+        - [标签 tags](#标签-tags)
+        - [分类 categorise](#分类-categorise)
+        - [搜索 search](#搜索-search)
+        - [自定义 ...](#自定义-)
+    - [文章样式 mainView](#文章样式-mainview)
+        - [标签优化](#标签优化)
+        - [评论引入](#评论引入)
+        - [谷歌-百度收录](#谷歌-百度收录)
+        - [访问量查看](#访问量查看)
+        - [底部版权信息](#底部版权信息)
 
-``` bash
-$ hexo new "My New Post"
-一脸黑人问号👤？？？
-emmm 这是hexo新建项目命令
-```
+<!-- /TOC -->
+
+
+
+
+
+## 基建 Base
+### 依赖环境 environment
+node.js
+hexo-client         npm install hexo-cli -g
+hexo-deployer-git   npm install hexo-deployer-git --save
+hexo-md-img-plagin  npm install https://github.com/CodeFalling/hexo-asset-image --save
+github-createRep
+
+### 常用命令 command
 
 Emmm Hexo 的写作教程细节->🐷More info: [Writing](https://hexo.io/docs/writing.html)
 
-### Run server|开启服务器👌
+Run server|开启服务器👌
 
 ``` bash
 $ hexo server
 hello,hello,hello... 你好啊，你是谁，你在哪，你在干什么👀👀👀
 ```
 
-More info: [Server](https://hexo.io/docs/server.html)
-
-### 生成文章的命令|Generate static files
+生成文章的命令|Generate static files
 
 ``` bash
 $ hexo generate
 ```
 
-More info: [Generating](https://hexo.io/docs/generating.html)
-
-### 生成文件 md->html|Deploy to remote sites
+生成文件 md->html|Deploy to remote sites
 
 ``` bash
 $ hexo deploy
 ```
 
-### 完成后部署
+完成后部署
 执行下列的其中一个命令，让 Hexo 在生成完毕后自动部署网站，两个命令的作用是相同的。  
 ``` bash
 $ hexo generate --deploy
@@ -91,8 +107,71 @@ More info: [Deployment](https://hexo.io/docs/deployment.html)
 ```
 
 
-## Will Change
-### 在文章底部增加版权信息
+
+
+## 主题轻改 Theme-Next
+### 基本信息 baseInfo
+#### 站点设置 siteInfo
+#### 侧边栏信息 authorInfo
+
+### 首页样式 viewIndex
+#### 博文块样式 blockView
+对齐
+书签
+#### 底层动画   cssFlash
+#### 右上Github 
+#### 页尾信息 footer
+   位置：\themes\next\layout\_partials\footer.swig
+   搜索标签：
+   <div class="author">
+   <div class="powered-by">
+   <div class="theme-info">
+   更改以上3标签内部链接内容
+   
+   同时可对以上标签弱修改，可修改语言配置文件
+   位置：\themes\next\languages\ 
+
+### 其他样式 views
+#### 关于 about
+#### 标签 tags
+#### 分类 categorise
+#### 搜索 search
+#### 自定义 ...
+
+### 文章样式 mainView
+#### 标签优化
+#### 评论引入
+#### 谷歌-百度收录
+#### 访问量查看
+   打开\themes\next\layout\_partials\footer.swig文件,
+   在《div class="copyright"》 前加入以下这句：
+   
+   ```
+   <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+   ```
+   之后再合适的位置添加显示统计代码：
+   ```
+    <div class="powered-by">
+    <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+      本站访客数:<span id="busuanzi_value_site_uv"></span>
+    </span>
+    </div>
+   ```
+   该脚本有两种不同的计算统计代码
+   pv统计：单用户连续点击n篇文章，记录n次访问量
+   ```
+    <span id="busuanzi_container_site_pv">
+        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+    </span>
+   ```
+   uv统计：单用户连续点击n篇文章，记录1次访问量
+   ```
+    <span id="busuanzi_container_site_uv">
+      本站总访问量<span id="busuanzi_value_site_uv"></span>次
+    </span>
+   ```
+
+#### 底部版权信息
 在目录 next/layout/_macro/下添加 my-copyright.swig：
 ```
     {% if page.copyright %}

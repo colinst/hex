@@ -13,19 +13,51 @@ categories: use
 date: 2017-12-012 13:00:00
 ---
 
-&emsp;&emsp;因被喝茶，shadowsocks 作者被迫停更了shadowsocks的python服务器版本，go语言版本开始被很多人使用。但python版本停更并非go版本使用频次增多的主要原因,除了语言切换的限制，更多的是因为go语言中自带高并发的特性，使得其体验较好，于是越来越多的同事都自行搭建go版本自用。
+&emsp;&emsp;因被喝茶，shadowsocks 作者被迫停更了shadowsocks的python服务器版本，
+go语言版本开始被很多人使用。但python版本停更并非go版本使用频次增多的主要原因,
+除了语言切换的限制，更多的是因为go语言中自带高并发的特性，使得其体验较好，
+于是越来越多的同事都自行搭建go版本自用。  
 &emsp;&emsp;本文尽可能详细说明shadowsocks的搭建使用细节。
 <!-- more -->
-&emsp;&emsp;本博文为综合集，文章较长，已分页，可在以下目录中新开链接窗口使用。前两步为提升网络性能，可直接从第三步开始。
-      * 升级Linux系统内核
-      * 更改Linux底层TCP协议算法[BBR 加速]
-      * 安装go
-      * 安装git
-      * 安装shadowsocks
-      * 配置config.json文件
-      * 防火墙开放端口
-      * 使用客户端测试链接
-&ensp;&ensp;
+
+## 目录
+&emsp;&emsp;本博文为综合集，文章较长左侧目录中新开链接窗口使用。
+前两步为提升网络性能，可直接从第三步开始。 
+
+<!-- TOC -->
+
+- [目录](#目录)
+- [说明](#说明)
+- [服务器选择](#服务器选择)
+- [关于云服务](#关于云服务)
+- [开始](#开始)
+- [Linux内核升级-> linux4](#linux内核升级--linux4)
+    - [检查当前系统内核版本：](#检查当前系统内核版本)
+    - [检查当前tcp算法](#检查当前tcp算法)
+    - [注意](#注意)
+    - [使用ELRepo仓库：](#使用elrepo仓库)
+    - [列出目前可用的Linux内核包：](#列出目前可用的linux内核包)
+    - [安装最新主线稳定内核](#安装最新主线稳定内核)
+    - [修改默认启动内核](#修改默认启动内核)
+        - [cnetos6](#cnetos6)
+        - [centos7](#centos7)
+    - [重启](#重启)
+    - [检测](#检测)
+- [tcp算法改为BBR](#tcp算法改为bbr)
+    - [配置生效](#配置生效)
+    - [检查](#检查)
+- [安装go](#安装go)
+- [安装git](#安装git)
+- [安装shadowsocks](#安装shadowsocks)
+- [配置config.json文件](#配置configjson文件)
+- [开放端口](#开放端口)
+- [开启shadowsocks服务](#开启shadowsocks服务)
+- [使用客户端测试链接](#使用客户端测试链接)
+- [备注](#备注)
+    - [重置密码](#重置密码)
+
+<!-- /TOC -->
+
 
 ## 说明
 &emsp;&emsp;使用shadowsocks的前置条件。
@@ -216,7 +248,7 @@ ELRepo是一个第三方仓库，可以将内核升级到最新版本。
 #### centos7
 centos 7中是通过grub2引导启动顺序。需要执行相关命令。
 1.查看当前系统所有内核
-``
+```
     [root@colinvps /]# cat boot/grub2/grub.cfg |grep menuentry
     if [ x"${feature_menuentry_id}" = xy ]; then
       menuentry_id_option="--id"
@@ -230,7 +262,6 @@ centos 7中是通过grub2引导启动顺序。需要执行相关命令。
     menuentry 'CentOS Linux, with Linux 3.10.0-123.el7.x86_64' --class centos --class gnu-linux --class gnu --class os --unrestricted $menuentry_id_option 'gnulinux-3.10.0-123.el7.x86_64-advanced-fe0109f2-6f34-48ae-b51e-1f5fa78305b5' {
     menuentry 'CentOS Linux, with Linux 0-rescue-11264912be38456483e63dfd21d402f4' --class centos --class gnu-linux --class gnu --class os --unrestricted $menuentry_id_option 'gnulinux-0-rescue-11264912be38456483e63dfd21d402f4-advanced-fe0109f2-6f34-48ae-b51e-1f5fa78305b5' {
     [root@colinvps /]#
-
 ```
 2.设置默认启动内核
 ```

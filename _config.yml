@@ -85,3 +85,16 @@ deploy:
   repository: git@github.com:hongxii/hongxii.github.io.git
   branch: master
   message:  merage
+
+# hexo-renderer-marked
+## markdown 换行规范
+marked:
+  gfm: true
+  pedantic: false
+  sanitize: false
+  tables: true
+  breaks: false
+  smartLists: true
+  smartypants: true
+  modifyAnchors: ''
+  autolink: true

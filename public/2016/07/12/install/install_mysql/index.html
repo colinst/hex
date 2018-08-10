@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="mysql,install," />
+  <meta name="keywords" content="install,mysql," />
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="Linux下安装MySql遇到的坑和问题">
-<meta name="keywords" content="mysql,install">
+<meta name="keywords" content="install,mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mysql安装[Linux]">
 <meta property="og:url" content="http://blog.gitmmp.com/2016/07/12/install/install_mysql/index.html">
@@ -374,7 +374,8 @@
       
 
       
-        <p>Linux下安装MySql遇到的坑和问题<br><a id="more"></a></p>
+        <p>Linux下安装MySql遇到的坑和问题
+<a id="more"></a></p>
 <h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><h4 id="1-get-Src-Yum"><a href="#1-get-Src-Yum" class="headerlink" title="1. get Src Yum"></a>1. get Src Yum</h4><p>MySQL5.7  </p>
 <pre><code>rpm -Uvh http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
 </code></pre><p>MySQL8.0.11</p>
@@ -535,7 +536,8 @@ mysql&gt; set global validate_password_length=1;
 Query OK, 0 rows affected (0.00 sec)
 </code></pre><p>And Change back to simple pwd</p>
 <h5 id="2-others-did"><a href="#2-others-did" class="headerlink" title="2. others did"></a>2. others did</h5><pre><code>mysql&gt; ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;MyNewPass4!&apos;;
-</code></pre><h5 id="3-tips-may-need-latter"><a href="#3-tips-may-need-latter" class="headerlink" title="3. tips may need latter"></a>3. tips may need latter</h5><p>如果忘记了MySQL root密码，可以用以下方法重新设置：<br>1.KILL掉系统里的MySQL进程</p>
+</code></pre><h5 id="3-tips-may-need-latter"><a href="#3-tips-may-need-latter" class="headerlink" title="3. tips may need latter"></a>3. tips may need latter</h5><p>如果忘记了MySQL root密码，可以用以下方法重新设置：
+1.KILL掉系统里的MySQL进程</p>
 <pre><code>killall -TERM MySQLd 
 </code></pre><p>2.用以下命令启动MySQL，以不检查权限的方式启动；</p>
 <pre><code>safe_MySQLd --skip-grant-tables &amp; 
@@ -551,11 +553,25 @@ MySQL&gt; quit
 mysql&gt;select &apos;host&apos; from user where user=&apos;root&apos;;
 mysql&gt;update user set host = &apos;%&apos; where user =&apos;root&apos;;
 mysql&gt;flush privileges;
-</code></pre><h3 id="Remove"><a href="#Remove" class="headerlink" title="Remove"></a>Remove</h3><p>1.查看已安装的mysql<br>命令：rpm -qa | grep -i mysql<br><img src="install_mysql/1.check.png" alt="avatar"><br><img src="/2016/07/12/install/install_mysql/1.check.png" title="check"></p>
-<p>2.卸载mysql<br>命令：yum remove mysql-community-server-5.6.36-2.el7.x86_64<br><img src="install_mysql/2.remove1.png" alt="avatar"><br><img src="/2016/07/12/install/install_mysql/2.remove1.png" title="remove1"></p>
-<p>查看mysql的其它依赖：rpm -qa | grep -i mysql<br>使用yum remove mysql-xxx依次卸载，知道mysql的其它依赖全部卸载掉为止<br><img src="install_mysql/3.getdep.png" alt="avatar"><br><img src="/2016/07/12/install/install_mysql/3.getdep.png" title="3.getdep"></p>
-<p>3.删除mysql文件目录<br>使用命令查看mysql相关的文件目录：find / -name mysql<br><img src="install_mysql/4.findfiles.png" alt="avatar"><br><img src="/2016/07/12/install/install_mysql/4.findfiles.png" title="4.findfiles"></p>
-<p>使用rm -rf 命令删除mysql的文件目录<br><img src="install_mysql/5.del.png" alt="avatar"><br><img src="/2016/07/12/install/install_mysql/5.del.png" title="5.del"></p>
+</code></pre><h3 id="Remove"><a href="#Remove" class="headerlink" title="Remove"></a>Remove</h3><p>1.查看已安装的mysql
+命令：rpm -qa | grep -i mysql
+<img src="install_mysql/1.check.png" alt="avatar">
+<img src="/2016/07/12/install/install_mysql/1.check.png" title="check"></p>
+<p>2.卸载mysql
+命令：yum remove mysql-community-server-5.6.36-2.el7.x86_64
+<img src="install_mysql/2.remove1.png" alt="avatar">
+<img src="/2016/07/12/install/install_mysql/2.remove1.png" title="remove1"></p>
+<p>查看mysql的其它依赖：rpm -qa | grep -i mysql
+使用yum remove mysql-xxx依次卸载，知道mysql的其它依赖全部卸载掉为止
+<img src="install_mysql/3.getdep.png" alt="avatar">
+<img src="/2016/07/12/install/install_mysql/3.getdep.png" title="3.getdep"></p>
+<p>3.删除mysql文件目录
+使用命令查看mysql相关的文件目录：find / -name mysql
+<img src="install_mysql/4.findfiles.png" alt="avatar">
+<img src="/2016/07/12/install/install_mysql/4.findfiles.png" title="4.findfiles"></p>
+<p>使用rm -rf 命令删除mysql的文件目录
+<img src="install_mysql/5.del.png" alt="avatar">
+<img src="/2016/07/12/install/install_mysql/5.del.png" title="5.del"></p>
 <p>至此mysql已成功卸载</p>
 
       
@@ -574,9 +590,9 @@ mysql&gt;flush privileges;
       
         <div class="post-tags">
           
-            <a href="/tags/mysql/" rel="tag"><i class="fa fa-tag"></i> mysql</a>
-          
             <a href="/tags/install/" rel="tag"><i class="fa fa-tag"></i> install</a>
+          
+            <a href="/tags/mysql/" rel="tag"><i class="fa fa-tag"></i> mysql</a>
           
         </div>
       
@@ -589,18 +605,14 @@ mysql&gt;flush privileges;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/12/install/install_jvm&tomcat/" rel="next" title="Jvm&Tomcat 安装">
-                <i class="fa fa-chevron-left"></i> Jvm&Tomcat 安装
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/01/10/setting/setting-hexo/" rel="prev" title="GithubPages-Hexo 使用设置|细则备注">
-                GithubPages-Hexo 使用设置|细则备注 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/07/12/install/install_jvm&tomcat/" rel="prev" title="Jvm&Tomcat 安装">
+                Jvm&Tomcat 安装 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -689,7 +701,7 @@ mysql&gt;flush privileges;
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 
               </div>
@@ -700,7 +712,7 @@ mysql&gt;flush privileges;
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
