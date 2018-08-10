@@ -56,11 +56,11 @@ Hexo + Next的组合可以无限优化，甚至某些组织站点都用hexo作�
 
 ## 基建 Base
 ### 依赖环境 environment
-node.js
-hexo-client         npm install hexo-cli -g
-hexo-deployer-git   npm install hexo-deployer-git --save
-hexo-md-img-plagin  npm install https://github.com/CodeFalling/hexo-asset-image --save
-github-createRep
+node.js  
+hexo-client         npm install hexo-cli -g  
+hexo-deployer-git   npm install hexo-deployer-git --save  
+hexo-md-img-plagin  npm install https://github.com/CodeFalling/hexo-asset-image --save  
+github-createRep  
 
 ### 常用命令 command
 
