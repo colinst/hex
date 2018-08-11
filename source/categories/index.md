@@ -35,8 +35,9 @@ maj
 ## SQL
 ### MyBatis
 
-## JAVA
-## KOTLIN
+## JVM
+### Java
+### Kotlin
 
 ## Dart
 ## Flutter
@@ -47,6 +48,7 @@ maj
 
 
 ## Gan
+### 贝叶斯算法
 
 ## Base
 ### code
