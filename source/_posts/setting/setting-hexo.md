@@ -64,49 +64,52 @@ github-createRep
 
 ### 常用命令 command
 
-Emmm Hexo 的写作教程细节->🐷More info: [Writing](https://hexo.io/docs/writing.html)
+####[写作细节](https://hexo.io/docs/writing.html)
 
-Run server|开启服务器👌
+    $ hexo init <folder>    //hexo io 建立hexo项目文件夹
+    $ cd <folder>           //cd io
+    $ npm install           //        部署项目文件
 
-``` bash
-$ hexo server
-hello,hello,hello... 你好啊，你是谁，你在哪，你在干什么👀👀👀
-```
+####转移项目时  
+1.先git项目到本地，文件夹改名（如io->ioo）  
+2.新建io 文件夹，cd进去，npm install  
+3.此时将ioo中文件全部覆盖到io文件夹  
+之后可以在自己的ide中编辑了
 
-生成文章的命令|Generate static files
+#### 在_posts 文件夹中新建md文档编辑就好
+md文件头：  
 
-``` bash
-$ hexo generate
-```
+    ---
+    title: 标题
+    
+    tags: 
+        - 标签1  
+        - 标签2  
+        
+    categories: 
+        - 分类1   
+        - 分类2  
+    
+    date: 2018-08-008 13:00:00
+    ---
+    
+    index页显示简介内容
+    <!-- more -->   //简介-正文分割符
+    
+文件头根据需要可加入别的属性  
+#### 发布
+    $ hexo generate     //将md文件生成需要部署的html静态页面
+    $ hexo server       //本地启动查看 [http://localhost:4000/](http://localhost:4000/)
+    $ hexo deploy       //发布到git地址
+生成发布可直接简写：  
 
-生成文件 md->html|Deploy to remote sites
+    $ hexo g -d
+    $ hexo d -g
 
-``` bash
-$ hexo deploy
-```
-
-完成后部署
-执行下列的其中一个命令，让 Hexo 在生成完毕后自动部署网站，两个命令的作用是相同的。  
-``` bash
-$ hexo generate --deploy
-$ hexo deploy --generate
-```
-
-> 简写
-上面两个命令可以简写为
-$ hexo g -d
-$ hexo d -g
-
-
-More info: [Deployment](https://hexo.io/docs/deployment.html)
-``` bash
+[发布细节](https://hexo.io/docs/deployment.html)  
 可以多定义几个deloy，deloy命令后会依次来repo,
 同时一起更新到github,gitlee,码云等。
-前提要创建好repo
-以及，对应站点定义好SSH key
-```
-
-
+前提要创建好repo，对应站点定义好SSH key。
 
 
 ## 主题轻改 Theme-Next
@@ -116,8 +119,33 @@ More info: [Deployment](https://hexo.io/docs/deployment.html)
 
 ### 首页样式 viewIndex
 #### 博文块样式 blockView
-对齐
-书签
+使用Gemini主题下修改
+#### 首页文章标题与文章简介的距离
+    默认值60
+    更改css样式 margin{上右下左}/{上右下}/{上下-右左}
+    src/setNext.md
+    位置：themes/next/source/css/_common/components/post/post-meta.styl
+    行号：02
+#### 首页文章标题-对齐
+    位置：themes/next/source/css/_common/components/post/post-title.styl
+    行号：02
+    默认：center
+    改为：left
+#### 阅读全文按钮调整
+    位置：themes/next/source/css/_variables/base.styl
+    行号：164-165
+    默认： $btn-default-border-width       = 2px
+          $btn-default-border-color       = $black-deep
+    
+    对齐-边距：
+    位置：themes/next/source/css/_common/components/post/post-button.styl
+    添加：text-align: left;    //对齐
+          margin-top: 4px;      //与简介边距$Ans*2
+    
+    按钮边距：
+    位置：themes/next/source/css/_common/components/buttons.styl
+    修改：padding: 0 0px;
+    默认：padding: 0 2px;
 #### 底层动画   cssFlash
 #### 右上Github 
 #### 页尾信息 footer

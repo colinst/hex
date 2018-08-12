@@ -17,13 +17,13 @@ date: 2018-08-008 13:00:00
 越来越多的Java后端逐渐转向kotlin,因其有诸多方便的特性：
 空指针安全、方法扩展、函数式编程、大量语法糖等。
 我们初步使用时会使得我们的代码信雅达，有很高的可读和可维护性。
-但实际工程环境中使用我们会发现kotlin中有不少的隐形开销，我们需要避免这些隐形开销。
+但实际工程环境中使用我们会发现kotlin中有不少的隐形开销，而我们需要避免。
 <!-- more -->
 
-## Kotlin隐性开销 
+## Kotlin隐性开销优化
 
 ### 局部函数 Local functions
-有时候我们会用常规语法在别的函数中声明函数，局部内部函数，我们这里叫他局部函数(local function)：
+有时候我们会用常规语法在一些函数中声明函数，局部内部函数，我们这里叫他局部函数(local function)：
     
     fun someMath(a: Int): Int {
     
@@ -31,10 +31,9 @@ date: 2018-08-008 13:00:00
         return sumSquare(1) + sumSquare(2)
     }
 首先我们要知道，局部函数无法声明为内联函数(inline)，
-同时包含该局部函数的主函数也不能声明为内联函数。这样我们就不可避免多一次函数调用。  
+同时包含该局部函数的主函数也不能声明为内联函数，这样会有很多非内联函数的限制，不可避免的要多一次函数调用。  
 
-在编译之后，局部函数会被转换为Fuction对象，同lambda一样。
-这样的话就会有很多非内联函数的限制，我们看到编译后对应的Java代码：
+在编译之后，局部函数会被转换为Fuction对象，同lambda一样。我们看到编译后对应的Java代码：
     
     public static final int someMath(final int a) {
        Function1 sumSquare$ = new Function1(1) {
@@ -50,7 +49,7 @@ date: 2018-08-008 13:00:00
        };
        return sumSquare$.invoke(1) + sumSquare$.invoke(2);
     }
-其实与lambda相比，这里性能损失已经更少了，
+其实与传统lambda相比，性能损失已经更少了，
 局部函数的最终实例是由其所在函数直接调用的，
 这样的调用避免了原始类型的强制转换或装箱处理。
 我们可以看到字节码：  
@@ -65,15 +64,15 @@ date: 2018-08-008 13:00:00
     IRETURN
 两次的方法调用都是直接返回int,中间没有任何拆箱操作。  
 
-不过Function在每次方法调用期间仍然要new对象,
-我们这样重写可以避免这种情况：
+不过Function在每次方法调用期间依然要new对象,
+我们将主函数参数传进局部函数可以避免这种情况：
 
     fun someMath（a：Int）：Int { 
         fun sumSquare（a：Int，b：Int）=（a + b）*（a + b）
     
         return sumSquare（a，1）+ sumSquare（a，2）
     }
-这样我们中间依然不会有任何转换或装箱。
+这样两个invoke间依然不会有类型转换或装箱。
 与私有函数相比，局部函数的唯一不足是在使用时会生成一个额外的类。
 
 **本地函数是私有函数的替代函数，
@@ -95,7 +94,7 @@ Kotlin中没有静态成员，而是通过伴生对象来实现。我们会在�
         }
     }
 ```
-如果将这一段转化成Java代码，则会复杂很多很多：
+如果将这一段转化成Java代码，会复杂很多：
 ```
     public class Demo {
         private static final int Version = 1;
@@ -199,30 +198,3 @@ lazy()默认情况下会指定LazyThreadSafetyMode.SYNCHRONIZED，
 >[ktlint](https://github.com/shyiko/ktlint):检查kotlin代码风格，要使用需要大量改造。  
  [detekt](https://github.com/arturbosch/detekt):静态分析kotlin代码，但也有缺陷（不能指定 [variant//变种] 检查,只支持控制台输出）。  
  lint //AndroidStuido 自带，可自定义检查规则
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
