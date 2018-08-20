@@ -98,3 +98,8 @@ marked:
   smartypants: true
   modifyAnchors: ''
   autolink: true
+
+
+# Support for LiveRe comments system.
+# You can get your uid from https://livere.com/insight/myCode (General web site)
+livere_uid: MTAyMC8zOTA2Ni8xNTU5Mw==

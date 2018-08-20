@@ -313,3 +313,21 @@ md文件头：
     ---
 ```
 
+### 三方
+
+#### 来必力
+1.登陆[官网](https://livere.com/) 
+进行[注册](https://was.livere.me/register?lang=zh-cn)等事宜  
+2.Next中进行设置  
+
+#### Next中设置
+1.首先在 _config.yml 文件中添加如下配置：  
+
+    # Support for LiveRe comments system.
+    # You can get your uid from https://livere.com/insight/myCode (General web site)
+    livere_uid: your uid
+
+
+
+
+
