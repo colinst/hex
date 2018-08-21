@@ -1,6 +1,6 @@
 ---
 title: Jvm&Tomcat 安装 
-
+copyright: true  
 tags: 
     - java 
     - tomcat  

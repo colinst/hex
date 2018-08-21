@@ -1,6 +1,6 @@
 ---
 title: ShadowSocks-从入门到出门[go版本]
-
+copyright: true  
 tags: 
     - go
     - ss

@@ -1,6 +1,6 @@
 ---
 title: Spring 动态数据源热切换
-
+copyright: true  
 tags: 
     - Spring 
     - SQL 

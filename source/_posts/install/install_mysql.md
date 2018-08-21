@@ -1,6 +1,6 @@
 ---
 title: Mysql安装[Linux] 
-
+copyright: true  
 tags: 
     - mysql
     - install  

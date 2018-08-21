@@ -1,6 +1,6 @@
 ---
 title: Hexo 引用图片 
-
+copyright: true  
 tags: 
     - hexo 
     - img 

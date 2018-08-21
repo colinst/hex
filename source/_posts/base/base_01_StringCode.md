@@ -1,11 +1,10 @@
 ---
 title: 字符串编码 StringCode
-
+copyright: true  
 tags: 
     - base 
     - String  
     - Decode  
-
 categories: 
     - Base     
     

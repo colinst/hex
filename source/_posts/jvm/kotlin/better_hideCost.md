@@ -1,11 +1,10 @@
 ---
 title: kotlin隐性优化 Kotlin's hidden costs
-
+copyright: true  
 tags: 
     - cost  
     - kotlin  
-    - 优化  
-    
+    - 优化
 categories: 
     - jvm   
     - kotlin  
