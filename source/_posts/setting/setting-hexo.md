@@ -1,6 +1,6 @@
 ---
 title: Hexo-Next 设置|备忘
-
+copyright: true  
 tags: 
     - hexo 
     - setting  
@@ -56,11 +56,13 @@ Hexo + Next的组合可以无限优化，甚至某些组织站点都用hexo作�
 
 ## 基建 Base
 ### 依赖环境 environment
-node.js  
-hexo-client         npm install hexo-cli -g  
-hexo-deployer-git   npm install hexo-deployer-git --save  
-hexo-md-img-plagin  npm install https://github.com/CodeFalling/hexo-asset-image --save  
-github-createRep  
+node.js             //在node.js 官网安装
+hexo-client         npm install hexo-cli -g                 //hexo客户端
+hexo-deployer-git   npm install hexo-deployer-git --save    //git工具
+hexo-md-img-plagin  npm install https://github.com/CodeFalling/hexo-asset-image --save   //图片编辑格式统一插件
+hexo-generator-search   npm install hexo-generator-search --save    //搜索插件 
+                    npm install hexo-tag-cloud@^2.0.* --save    //标签云插件 
+github-create the Rep[repName=uid.github.io]  
 
 ### 常用命令 command
 
@@ -148,6 +150,44 @@ md文件头：
     默认：padding: 0 2px;
 #### 底层动画   cssFlash
 #### 右上Github 
+#### index页面加载条
+这个如果用的是比较新的NexT主题，只需要在配置文件里面进行修改就可以了。
+旧的话，就需要对/next/layout/_partials/head.swig文件做些修改，添加对应的代码。  
+```
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+    <style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+    </style>
+```
+
+#### 标签云
+    
+    找到文件 next/layout/_macro/sidebar.swig, 然后添加如下内容。
+    
+    {% if site.tags.length > 1 %}
+    <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+    <div class="widget-wrap">
+        <h3 class="widget-title">Tag Cloud</h3>
+        <div id="myCanvasContainer" class="widget tagcloud">
+            <canvas width="250" height="250" id="resCanvas" style="width=100%">
+                {{ list_tags() }}
+            </canvas>
+        </div>
+    </div>
+    {% endif %}
+
 #### 页尾信息 footer
    位置：\themes\next\layout\_partials\footer.swig
    搜索标签：
@@ -164,11 +204,28 @@ md文件头：
 #### 标签 tags
 #### 分类 categorise
 #### 搜索 search
-#### 自定义 ...
 
+添加本地搜索  
+安装 hexo-generator-search，在nanshanyi.github.io目录下执行以下命令：
+
+    $ npm install hexo-generator-search --save
+在   next/_config.yml添加  
+
+    search: 
+      path: search.xml
+      field: post
+      format: html
+      limit: 10000
+同时在该文件中开启search功能 local_search改为true
+    
+    local_search:
+      enable: true
+
+#### 自定义 ...  
 ### 文章样式 mainView
 #### 标签优化
-#### 评论引入
+
+
 #### 谷歌-百度收录
 #### 访问量查看
    打开\themes\next\layout\_partials\footer.swig文件,
@@ -315,18 +372,35 @@ md文件头：
 
 ### 三方
 
-#### 来必力
+#### 评论-来必力
 1.登陆[官网](https://livere.com/) 
 进行[注册](https://was.livere.me/register?lang=zh-cn)等事宜  
 2.Next中进行设置  
 
-#### Next中设置
+Next中设置
 1.首先在 _config.yml 文件中添加如下配置：  
 
     # Support for LiveRe comments system.
     # You can get your uid from https://livere.com/insight/myCode (General web site)
     livere_uid: your uid
 
+#### 评论-valine
+我们的评论系统其实是放在Leancloud上的，因此首先需要去注册一个账号  
+[Leancloud官网](https://leancloud.cn/dashboard/data.html?appid=dU4DFkRRQqU30bvT0uXQmhSw-gzGzoHsz#/)
+注册完以后需要创建一个应用，名字可以随便起，然后 进入应用->设置->应用key  
+获取你的appid 和 appkey  
+
+Next中已经内置，在_config中设置开启
+
+    valine:
+      enable: true
+      appid:  your app id
+      appkey: your app key
+      notify: false # mail notifier , https://github.com/xCss/Valine/wiki
+      verify: false # Verification code
+      placeholder: ヾﾉ≧∀≦)o来啊，快活啊! 
+      guest_info: nick,mail,link
+      pageSize: 10
 
 
 
