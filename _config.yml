@@ -27,7 +27,7 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render:
+skip_render: [googleb2b4a4dcdb4a9ac4.html, baidu_verify_LTdH7sdSdx.html]
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -103,3 +103,9 @@ marked:
 # Support for LiveRe comments system.
 # You can get your uid from https://livere.com/insight/myCode (General web site)
 livere_uid: MTAyMC8zOTA2Ni8xNTU5Mw==
+
+# 自动生成sitemap
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml

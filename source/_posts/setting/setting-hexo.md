@@ -56,12 +56,30 @@ Hexo + Next的组合可以无限优化，甚至某些组织站点都用hexo作�
 
 ## 基建 Base
 ### 依赖环境 environment
-node.js             //在node.js 官网安装
-hexo-client         npm install hexo-cli -g                 //hexo客户端
-hexo-deployer-git   npm install hexo-deployer-git --save    //git工具
-hexo-md-img-plagin  npm install https://github.com/CodeFalling/hexo-asset-image --save   //图片编辑格式统一插件
-hexo-generator-search   npm install hexo-generator-search --save    //搜索插件 
-                    npm install hexo-tag-cloud@^2.0.* --save    //标签云插件 
+
+    //在node.js官网去下载安装
+    node.js       
+          
+    //Shell 
+    //hexo-client  hexo客户端安装         
+    npm install hexo-cli -g
+    
+    //hexo-deployer-git   //git工具
+    npm install hexo-deployer-git --save    
+   
+    //hexo-md-img-plagin  //图片编辑格式统一插件
+    npm install https://github.com/CodeFalling/hexo-asset-image --save   
+    
+    //hexo-generator-search   //搜索插件
+    npm install hexo-generator-search --save    
+     
+    //标签云插件
+    npm install hexo-tag-cloud@^2.0.* --save
+    
+    //站点地图生成插件  百度和谷歌
+    npm install hexo-generator-baidu-sitemap --save    
+    npm install hexo-generator-sitemap --save           //谷歌
+         
 github-create the Rep[repName=uid.github.io]  
 
 ### 常用命令 command
@@ -403,5 +421,37 @@ Next中已经内置，在_config中设置开启
       pageSize: 10
 
 
+#### SEO优化
+    
+#####站点地图
+站点地图即sitemap， 是一个页面，上面放置了网站上需要搜索引擎抓取的所有页面的链接。
+站点地图可以告诉搜索引擎网站上有哪些可供抓取的网页，以便搜索引擎可以更加智能地抓取网站。  
+生成站点地图
+安装百度和Google的站点地图生成插件：
+    
+    npm install hexo-generator-sitemap --save       //google
+    npm install hexo-generator-baidu-sitemap --save       
+#####修改配置文件
+修改站点配置文件_config.yml，添加以下内容：
+
+    # 自动生成sitemap
+    sitemap:
+      path: sitemap.xml
+    baidusitemap:
+      path: baidusitemap.xml    
+在hexo g后，public目录下会有sitemap.xml和baidusitemap.xml两个文件，
+这就是生成的站点地图。  
+前往百度提交入口和谷歌提交入口，进行文件验证:  
+下载他他们的验证文件html,
+在_config文件中找到skip_render属性，存入  
+    
+    //避免被hexo渲染
+    skip_render: [googleb2b4a4dcdb4a9ac4.html, baidu_verify_R6YFRwbiQw.html]
+重新渲染文件： hexo clean hexo d -g
+再进行站长验证.  
+验证成功后前往各自站点提交sitemap
+
+
+    
 
 
