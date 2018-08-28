@@ -79,6 +79,10 @@ Hexo + Next的组合可以无限优化，甚至某些组织站点都用hexo作�
     //站点地图生成插件  百度和谷歌
     npm install hexo-generator-baidu-sitemap --save    
     npm install hexo-generator-sitemap --save           //谷歌
+    
+    //多媒体插件
+    npm install hexo-tag-aplayer    //音频
+    npm install hexo-tag-dplayer    //视频
          
 github-create the Rep[repName=uid.github.io]  
 
@@ -452,6 +456,33 @@ Next中已经内置，在_config中设置开启
 验证成功后前往各自站点提交sitemap
 
 
+#### 多媒体
+插件
+npm install hexo-tag-aplayer    //音频
+npm install hexo-tag-dplayer    //视频
+##### 视频
+md中插入  
+
+    {   % dplayer
+         "url=http://home.ustc.edu.cn/~mmmwhy/GEM.mp4"  
+         "pic=http://home.ustc.edu.cn/~mmmwhy/GEM.jpg" 
+         "loop=yes" 
+         "theme=#FADFA3" 
+         "autoplay=false" 
+         "token=tokendemo" 
+    %}
+key的属性有：
     
+    dplayer options:
+        'autoplay', 'loop', 'screenshot','hotkey', 'mutex', 'dmunlimited' : bool options, use "yes" "y" "true" "1" "on" or just without value to enable
+        'preload', 'theme', 'lang', 'logo', 'url', 'pic', 'thumbnails', 'vidtype', 'suburl', 'subtype', 'subbottom', 'subcolor', 'subcolor', 'id', 'api', 'token', 'addition', 'dmuser' : string arguments
+        'volume', 'maximum' : number arguments
+    container options:
+        'width', 'height' : string, used in container element style
+    other:
+        'code' : value of this key will be append to script tag
+    
+
+##### 音频
 
 
