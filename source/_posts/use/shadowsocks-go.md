@@ -17,12 +17,11 @@ date: 2017-12-012 13:00:00
 go语言版本开始被很多人使用。但python版本停更并非go版本使用频次增多的主要原因,
 除了语言切换的限制，更多的是因为go语言中自带高并发的特性，使得其体验较好，
 于是越来越多的同事都自行搭建go版本自用。  
-&emsp;&emsp;本文尽可能详细说明shadowsocks的搭建使用细节。
+本文尽可能详细说明shadowsocks的搭建使用细节。
 <!-- more -->
 
 ## 目录
-&emsp;&emsp;本博文为综合集，文章较长左侧目录中新开链接窗口使用。
-前两步为提升网络性能，可直接从第三步开始。 
+ 
 
 <!-- TOC -->
 
@@ -60,39 +59,46 @@ go语言版本开始被很多人使用。但python版本停更并非go版本使�
 
 
 ## 说明
-&emsp;&emsp;使用shadowsocks的前置条件。
-&emsp;&emsp;首先，必须拥有一台境外服务器，如果不是自己的物理所有，则需租赁VPS服务器。
-&emsp;&emsp;所谓VPS服务器，即Virtual Private Server -私有虚拟服务器。
-&emsp;&emsp;关于租赁服务器，博主常用服务商为vultr、搬瓦工、cloudcone等，这也是目前广告和稳定性同时做的比较好的几家。
+&emsp;&emsp;使用shadowsocks的前置条件。  
+&emsp;&emsp;首先，必须拥有一台境外服务器，如果不是自己的物理所有，则需租赁VPS服务器。  
+&emsp;&emsp;所谓VPS服务器，即Virtual Private Server -私有虚拟服务器。  
+&emsp;&emsp;关于租赁服务器，博主常用服务商为vultr、搬瓦工、cloudcone等，
+这也是目前广告和稳定性同时做的比较好的几家。  
 &emsp;&emsp;另随互联网产业不断增长，相关服务需求缺口逐渐呈现，越来越多的云服务商参与其中竞争，相对前面几家，有很多的小服务商也推出了性价比更高的vps服务，主要集中在俄国区，各位可以自由选择。
-大厂还有谷歌的云服务器、亚马逊的AWS,微软的Azure，各位均可一试。
-&emsp;&emsp;本文搭建环境时VPS系统为centos。
+大厂还有谷歌的云服务器、亚马逊的AWS,微软的Azure，各位均可一试。  
+&emsp;&emsp;本文搭建环境时VPS系统为centos。  
 
 ## 服务器选择
-&ensp;&ensp;选择VPS服务商时需注意地理位置远近，测速工具检测结果，及其服务器架构，其中注意服务器最好选择Kvm,Xen等宽容度较高的架构方便网络层级的扩展，避免OpenVZ,另外也会有服务器厂家会挂Xen卖OpenVZ,在购买之后也要记得及时检测。
-&ensp;&ensp;购买服务器之后还有及时ping 服务器ID，若ping不通则马上发工单换ip,不同服务商换IP的价格不同。
-&ensp;&ensp;国内云服务器所售的境外机型不推荐选择，性价比太低。
+&ensp;&ensp;选择VPS服务商时需注意地理位置远近，测速工具检测结果，及其服务器架构，
+其中注意服务器最好选择Kvm,Xen等宽容度较高的架构方便网络层级的扩展，避免OpenVZ,
+另外也会有服务器厂家会挂Xen卖OpenVZ,在购买之后也要记得及时检测。  
+&ensp;&ensp;购买服务器之后还有及时ping 服务器ID，若ping不通则马上发工单换ip,
+不同服务商换IP的价格不同。  
+&ensp;&ensp;国内云服务器所售的境外机型不推荐选择，性价比太低。  
 
 ## 关于云服务
-&ensp;&ensp;关于云服务厂商所提供的VPS服务，大多为基于OpenStack的云计算平台开源实现，国内的两大云服务厂商也是基于此，不久前滴滴和腾讯云业务分开后，也自行组建了滴滴云服务平台，也是基于OpenStack,但其刚起步不推荐。  
-OpenStack相关的云计算实现，国内学习资源不多，各位可自行搜索，主栈语言为Python。
+&ensp;&ensp;关于云服务厂商所提供的VPS服务，大多为基于OpenStack的云计算平台开源实现，
+国内的两大云服务厂商也是基于此，不久前滴滴和腾讯云业务分开后，也自行组建了滴滴云服务平台，也是基于OpenStack,但其刚起步不推荐。  
+OpenStack相关的云计算实现，国内学习资源不多，各位可自行搜索，主栈语言为Python。  
 此处提供OpenStack官方地址：  
-&ensp;&ensp;[OpenStack 官网](https://www.openstack.org/)
-&ensp;&ensp;[OpenStack github主页](https://github.com/openstack)
+&ensp;&ensp;[OpenStack 官网](https://www.openstack.org/)  
+&ensp;&ensp;[OpenStack github主页](https://github.com/openstack)  
 
 
 ## 开始
 现在你已拥有了基于Xen架构的虚拟机(可ping通)，并已使用root账户登陆拥有管理员权限，接下来的步骤为：
-    * 升级Linux系统内核
-    * 更改Linux底层TCP协议算法[BBR 加速]
-    * 安装go
-    * 安装git
-    * 安装shadowsocks
-    * 配置config.json文件
-    * 防火墙开放端口
-    * 使用客户端测试链接
+    * 升级Linux系统内核  
+    * 更改Linux底层TCP协议算法[BBR 加速]  
+    * 安装go  
+    * 安装git  
+    * 安装shadowsocks  
+    * 配置config.json文件  
+    * 防火墙开放端口  
+    * 使用客户端测试链接  
 
-配置前两项后可使用谷歌Tcp bbr算法加速，bbr算法可基于ai智能控制数据包上下行数量，减少国际带宽拥堵。也可以不管以上两项直接从安装go开始。
+配置前两项后可使用谷歌Tcp bbr算法加速，bbr算法可基于ai智能控制数据包上下行数量，
+减少国际带宽拥堵。  
+前两步为提升网络性能，可直接从第三步开始。
 
 ## Linux内核升级-> linux4
 ###检查当前系统内核版本：
@@ -232,8 +238,8 @@ ELRepo是一个第三方仓库，可以将内核升级到最新版本。
 ```
 ### 修改默认启动内核
 #### cnetos6
-如果是centos6,直接通过/etc/grub.conf文件修改启动顺序
-使用vi 或者vim命令修改
+如果是centos6,直接通过/etc/grub.conf文件修改启动顺序  
+使用vi 或者vim命令修改  
 ```
     vi /boot/grub/grub.conf
     
@@ -244,9 +250,9 @@ ELRepo是一个第三方仓库，可以将内核升级到最新版本。
     timeout=5
     ...
 ```
-其中default默认为0，将其修改为1即可
+其中default默认为0，将其修改为1即可  
 #### centos7
-centos 7中是通过grub2引导启动顺序。需要执行相关命令。
+centos 7中是通过grub2引导启动顺序。需要执行相关命令。  
 1.查看当前系统所有内核
 ```
     [root@colinvps /]# cat boot/grub2/grub.cfg |grep menuentry
@@ -283,7 +289,7 @@ centos 7中是通过grub2引导启动顺序。需要执行相关命令。
 一般选择第二个，主要选择对应安装号码的内核就好，“(4.17.3-1.el7.elrepo.x86_64) 7 (Core)”  
 
 ### 检测
-登陆后查看系统内核：
+登陆后查看系统内核：  
 ```
     [root@vultr_host /]# uname -sr
     Linux 4.17.2-693.21.1.el7.x86_64
@@ -340,7 +346,7 @@ centos 7中是通过grub2引导启动顺序。需要执行相关命令。
     [root@vultr_host /]# sysctl net.ipv4.tcp_available_congestion_control
     net.ipv4.tcp_available_congestion_control = reno cubic bbr
 ```
-结果带有bbr
+结果带有bbr  
 
 成功使用BBR算法
 ```    
@@ -711,8 +717,8 @@ centos 7中是通过grub2引导启动顺序。需要执行相关命令。
 config文件参数配置：
 
 ## 开放端口
-将以上config文件的端口添加到防火墙
-这里使用firewall命令
+将以上config文件的端口添加到防火墙  
+这里使用firewall命令  
 
 查看所有打开的端口： 
 ```
@@ -749,15 +755,15 @@ config文件参数配置：
 
 ## 使用客户端测试链接
 在[shadowsocks-windows](https://github.com/shadowsocks/shadowsocks-windows/releases)中下载客户端
-shadowsocks-windows客户端配置同服务器config.json文件一致就好，可根据不同端口配置不同密码
+shadowsocks-windows客户端配置同服务器config.json文件一致就好，可根据不同端口配置不同密码  
 配置好相关的内容进行测试，启用系统代理，右键点开帮助->显示日志
-查看链接情况
-点击[谷歌](https://www.google.com/)测试 
+查看链接情况  
+点击[谷歌](https://www.google.com/)测试   
 
 
 ##备注
 ###重置密码
-VPS重启镜像后重置密码
+VPS重启镜像后重置密码  
 ```
     [root@colinvps ~]# passwd root
     New password:
