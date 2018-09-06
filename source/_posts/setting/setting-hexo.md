@@ -83,6 +83,9 @@ Hexo + Next的组合可以无限优化，甚至某些组织站点都用hexo作�
     //多媒体插件
     npm install hexo-tag-aplayer    //音频
     npm install hexo-tag-dplayer    //视频
+    
+    //貌似全局用的安装工具
+    npm install -g npm-install-peers
          
 github-create the Rep[repName=uid.github.io]  
 

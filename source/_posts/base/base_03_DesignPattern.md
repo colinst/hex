@@ -228,11 +228,293 @@ OUT：
         5 1 E*/
     } 
 ```
+
+### 简单工厂模式封装
+```
+    interface Do{
+    
+        var x:Int
+        var y:Int
+        var z:Char
+    
+        fun numL(z:Int):Int
+        fun numR(z:Int):Int
+    
+        val rangeZ:List<Char>
+        fun DoResult(): Rover
+    }
+    
+    data class DoL(override var x:Int,
+                    override var y:Int,
+                    override var z:Char) :Do{
+    
+        override fun numL(z:Int)=if (z==0) 3 else z-1
+        override fun numR(z:Int)=if (z==3) 0 else z+1
+    
+        override val rangeZ=arrayListOf('E','S','W','N')
+        override fun DoResult(): Rover {
+    
+            val i=rangeZ.indexOf(z)
+            val ii=numL(i)
+            z=rangeZ[ii]
+            return Rover(x,y,z)
+        }
+    }
+    
+    data class DoM(override var x:Int,
+              override var y:Int,
+              override var z:Char) :Do{
+    
+        override fun numL(z:Int)=if (z==0) 3 else z-1
+        override fun numR(z:Int)=if (z==3) 0 else z+1
+    
+        override val rangeZ=arrayListOf('E','S','W','N')
+    
+        override fun DoResult(): Rover {
+            when(z){
+                'E' ->  x++
+                'S' ->  y--
+                'W' ->  x--
+                'N' ->  y++
+            }
+            return Rover(x,y,z)
+        }
+    }
+    
+    class DoR(override var x:Int,
+              override var y:Int,
+              override var z:Char) :Do{
+    
+        override fun numL(z:Int)=if (z==0) 3 else z-1
+        override fun numR(z:Int)=if (z==3) 0 else z+1
+    
+        override val rangeZ=arrayListOf('E','S','W','N')
+    
+        override fun DoResult(): Rover {
+    
+            val i=rangeZ.indexOf(z)
+            val ii=numR(i)
+            z=rangeZ[ii]
+            return Rover(x,y,z)
+        }
+    }
+```
+
 ### 松紧耦合
 紧耦合：  
 Rover对象的L,R,M方法写在一起，需求改变时需要需直接改变方法  
 松耦合：  
 解耦函数架构，将每个方法抽象成功能类
+
+### UML类图
+分三层  
+1.类名(抽象类用斜体)  
+2.字段属性  
+3.方法行为  
+
+
+
+# 策略模式|Strategy Mode
+商场收银系统   
+### 简单工厂实现
+现金收费对象下有多个实现子类
+```
+    class 收费对象{
+        fun 收费(money:Money)=money
+    }
+    
+    class 正常收费：收费对象{
+        override fun 收费(money:Money)=money
+    }
+    
+    class 折扣收费(折扣倍率：折扣)：收费对象{
+        override fun 收费(money:Money)=money*折扣倍率
+    }
+    
+    class 返利收费(返利条件，返利值)：收费对象{
+        override fun 收费(money:Money){
+            if(返利条件) money-=返利值
+            return money
+        }
+    }
+    
+    Object  收费工厂{
+        
+        fun 收费对象生成(type):收费对象{
+            
+            when(type){
+                "正常收费"  -> return 正常收费()
+                "折扣收费"  -> return 折扣收费(折扣倍率)
+                "返利收费"  -> return 返利收费(返利条件，返利值)
+            }
+        }
+    }
+```
+### 策略模式
+定义了算法家族，将其分别封装，之间可相互替换，不影响算法使用者  
+将上面的收费对象定义为接口即可，在需要的时候继承再new生成创建对象实例  
+策略者模式将所有算法封装在接口中，调用时取用其子类生成的实例  
+
+### 说明
+优点：  
+策略类层配合Const常量定义了可重用的方法，助于析取公共方法  
+简化单元测试
+
+
+
+# 单一职责原则|SRP
+就一个类而言，应该仅有一个引起它变化的原因  
+如果一个类承担的之策过多，等于将这些职责耦合再一起，
+单个职责变化会削弱或抑制这个类完成其他职责的能力。
+该种耦合会导致设计脆弱，甚至产生意外破坏(ASD);  
+
+# 开放-封闭原则
+对扩展开放(Open for extension)    
+对更改封闭(Closed for modification)  
+要对频繁变化的模块进行抽象，但全部抽象也不好  
+
+# 依赖倒转原则
+强内聚，松耦合  
+抽象不应依赖细节，细节应依赖于抽象  
+针对接口编程，不要对实现编程
+A.高层模块不应该依赖低层模块，两个都应该依赖抽象  
+B.抽象不应该依赖细节。细节应该依赖抽象。
+
+里氏代换原则  —>  
+一个软件实体如果使用的是一个父类，那么一定适用于其子类，而软件无法察觉其变化。  
+里氏代换原则(LSP)：子类型必须能够替换掉它们的父类型[ASD]。  
+由于子类型的可替换性才使得父类的模块再无需修改时就可扩展。  
+
+依赖倒转是面向对象设计的标志，如果编写时考虑的是如何针对抽象编程而不是针对编程细节，
+即程序中的依赖关系都是终于抽象类和接口，那就是面向对象设计，反之为过程化的设计。  
+
+
+
+# 装饰模式|Decoration mode
+动态的给一个对象添加一些额外的职责  
+//比生成子类更灵活  
+
+通过继承原始类，覆写部分功能来实现
+
+Component类
+```
+    abstract class ComPonent{
+        public abstract void Operation();
+    }
+```
+ConcreteComponent 类
+```
+    class ConcreteComponent:Component{
+        public override void Operation(){
+            Console.WriteLine("具体操作")
+        }
+    }
+```
+Decorator 类
+```
+    abstract class Decorator:Component{
+        
+        protected Compenent component;
+        public void SetComponent(Compenent component){
+            this.component=component;
+        }
+        public override void Operation(){
+            if(component!=null)
+            component.Operation();//实际执行我们放入的component的operation
+        }
+    }
+```
+
+ConcreteDecoratorA-装饰实体类
+```
+    class ConcreteSecoratorA:Decorator{
+        
+        private String addedState;          //该类独有功能，不同于ConcreteSecoratorB
+        public override void Operation(){
+            base.Operation();               //先执行原component的operation,再执行本类的功能
+            addedState= "new star";
+            Console.WriteLine("装饰对象A操作");
+        }
+    }
+```
+
+### 说明
+装饰模式是为已有功能动态添加更多功能的方式。  
+每个装饰的功能再单独的类中，并包装了他所装饰的对象，可自由处理。
+
+
+# 代理模式 | proxy
+代理接口
+```
+    intface GiveGift{
+        fun GiveDolls()
+        fun GiveFlowers()
+        fun GiveChocolate()
+    }
+```
+
+追求者类
+```
+    class Pursuit(val girls: Girl):GiveGift { 
+        override fun GiveDolls() = println("${girls.name}  送你洋娃娃")
+        override fun GiveFlowers()= println("${girls.name}  送你洋鲜花")
+        override fun GiveChocolate() = println("${girls.name}  送你巧克力")
+    }
+```
+
+代理类
+```
+    class Proxy(girl: Girl):GiveGift {
+        val gg=Pursuit(girl)
+        override fun GiveDolls()=gg.GiveDolls()
+        override fun GiveFlowers() =gg.GiveFlowers()
+        override fun GiveChocolate()=gg.GiveChocolate()
+    }
+```
+
+实现
+```
+    class Proxy(girl: Girl):GiveGift {
+        val gg=Pursuit(girl)
+        override fun GiveDolls()=gg.GiveDolls()
+        override fun GiveFlowers() =gg.GiveFlowers()
+        override fun GiveChocolate()=gg.GiveChocolate()
+    }
+```
+阿珍不认识追她的人，但是通过代理拿到了礼物
+
+## 说明
+代理模式为其他对象提供了一种代理以控制这个对象的访问
+
+## 应用
+1.远程代理：为一个对象再不同地址空间提供局部代表。
+同时隐藏一个对象存在不同地址空间的事实。  
+2.虚拟代理：按需创建大开销对象，来预缓存真实对象。(如预加载缓存框)  
+3.安全代理：控制真实对象访问时权限。
+4.智能指引：调用当前实例对象时，同时代理处理一些别的事。
+
+
+
+# 工厂方法 | Factory Method
+## 简单工厂VS工厂方法
+简单工厂下的计算器实现
+![avatar](base_03_DesignPattern/计算器的简单工厂结构.png)
+
+工厂方法下的计算器实现
+![avatar](base_03_DesignPattern/计算器的工厂方法结构.png)
+
+简单工厂的优点在于工厂类中包含了必要的判断逻辑，由客户端的条件去选择动态实例化。  
+例如计算器，如果只有‘+’，将‘+’给具体工厂，工厂会很快给出实例。  
+但是如果"求M数的N次方"功能，那么在运算工厂里需要加入case分支，违背了开放-封闭原则。  
+所以才有了工厂方法模式。  
+工厂方法克服了简单工厂违反开放-封闭原则的特点，又保持了封装对象创建过程的优点。  
+但是每加一个产品，就要加一个产品工厂的类，有额外的开发量增加。  
+
+
+
+
+
+# 原型模式
 
 
 

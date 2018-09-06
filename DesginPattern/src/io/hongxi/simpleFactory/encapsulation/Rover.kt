@@ -1,9 +1,9 @@
 package io.hongxi.simpleFactory.encapsulation
 
-class Rover constructor(var x:Long, var y:Long, var z:String){
+class Rover constructor(var x:Int, var y:Int, var z:Char){
 
-    val rangez= arrayListOf("e","s","w","n")
-    val rangeZ= arrayListOf("E","S","W","N")
+    val rangez= arrayListOf('e','s','w','n')
+    val rangeZ= arrayListOf('E','S','W','N')
 
     fun numL(z:Int)=if (z==0) 3 else z-1
     fun numR(z:Int)=if (z==3) 0 else z+1
@@ -26,10 +26,10 @@ class Rover constructor(var x:Long, var y:Long, var z:String){
 
     fun doM(){
         when(z){
-            "E" ->  x++
-            "S" ->  y--
-            "W" ->  x--
-            "N" ->  y++
+            'E' ->  x++
+            'S' ->  y--
+            'W' ->  x--
+            'N' ->  y++
         }
     }
 }

@@ -2,12 +2,12 @@ package io.hongxi.simpleFactory.encapsulation
 
 import java.util.*
 
-val Rovers= MutableList(0,{ Rover(1, 1, "N") })
+val Rovers= MutableList(0,{ Rover(1, 1, 'N') })
 val sc = Scanner(System.`in`)
 
-var boderX=0L
-var boderY=0L
-val rangeZ= arrayListOf("E","S","W","N")
+var boderX=0
+var boderY=0
+val rangeZ= arrayListOf('E','S','W','N')
 
 fun InputSize(){
     println("please input map size:'x y'")
@@ -56,8 +56,8 @@ fun WashSize(mapSize:String){
         return
     }
     try {
-        boderX =list[0].toLong()
-        boderY =list[1].toLong()
+        boderX =list[0].toInt()
+        boderY =list[1].toInt()
     } catch (e:Exception){
         System.err.println("wrong input,please input again:'x y'")
         InputSize()
@@ -76,18 +76,18 @@ fun WashLocation(location:String){
     val list=location.split(' ').toMutableList()
     list.removeAll(Array(99,{""}))
 
-    val x:Long
-    val y:Long
-    val z:String
+    val x:Int
+    val y:Int
+    val z:Char
     if (list.size!=3){
         System.err.println("wrong input,please input again:'x y z',example:'1 1 N','2 2 W'..  z in ['E','S','W','N']")
         InputLocation()
         return
     }
     try {
-        x=list[0].toLong()
-        y=list[1].toLong()
-        z=list[2]
+        x=list[0].toInt()
+        y=list[1].toInt()
+        z=list[2].toCharArray()[0]
     } catch (e:Exception){
         System.err.println("wrong input,please input again:'x y z',example:'1 1 N','2 2 W'..  z in ['E','S','W','N']")
         InputLocation()
